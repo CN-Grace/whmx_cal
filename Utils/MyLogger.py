@@ -1,8 +1,12 @@
 import logging
+import os
 
 
 class MyLogger:
     def __init__(self, name, level=logging.INFO):
+        if not os.path.exists("./Logs"):
+            os.mkdir("./Logs")
+
         self.logger = logging.getLogger(name)
         self.logger.setLevel(level)
         self.formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
